@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ShopiZey — Boutique 0€ (Free + Shipping)</title>
+  <meta name="description" content="ShopiZey — boutique dropshipping (produits free + shipping).">
+  <style>
+    :root{--accent:#4f46e5;--muted:#666}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:#fafafa;color:#111}
+    header{background:linear-gradient(90deg,#fff 0,#f7f7ff 100%);border-bottom:1px solid #eee;padding:18px}
+    .container{max-width:980px;margin:0 auto;padding:18px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo svg{width:54px;height:54px}
+    h1{margin:0;font-size:20px}
+    p.lead{color:var(--muted);margin:6px 0 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:18px}
+    .card{background:#fff;border:1px solid #eee;border-radius:12px;padding:12px;display:flex;flex-direction:column}
+    .card img{width:100%;height:170px;object-fit:cover;border-radius:8px}
+    .price{font-weight:700;margin-top:8px}
+    .old{color:var(--muted);text-decoration:line-through;font-weight:500;margin-left:8px}
+    .btn{background:var(--accent);color:#fff;border:none;padding:10px;border-radius:8px;cursor:pointer;margin-top:10px}
+    .btn.secondary{background:#fff;color:var(--accent);border:1px solid #ffb6b6}
+    footer{margin-top:30px;padding:18px 0;color:var(--muted);font-size:13px}
+    .cart{position:fixed;right:18px;bottom:18px;background:#fff;border:1px solid #eee;padding:12px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.06);width:320px}
+    .cart h3{margin:0 0 8px}
+    .cart .line{display:flex;justify-content:space-between;margin-bottom:6px}
+    .hidden{display:none}
+    .badge{background:#fff;border:1px solid #eee;padding:6px 10px;border-radius:999px;font-size:13px}
+    .hero{display:flex;gap:18px;align-items:center;margin-top:12px}
+    .hero .left{flex:1}
+    .hero .right img{width:260px;border-radius:12px}
+    .policies{background:#fff;border-radius:10px;padding:12px;margin-top:18px;border:1px solid #eee}
+    @media(max-width:720px){.hero{flex-direction:column}.cart{width:92%;left:4%;right:4%}}
+    input,textarea{width:100%;padding:8px;border:1px solid #eee;border-radius:8px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <!-- Logo SVG simple - ShopiZey -->
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#ff9a9e"/>
+              <stop offset="1" stop-color="#fad0c4"/>
+            </linearGradient>
+          </defs>
+          <rect rx="36" width="200" height="200" fill="url(#g)" />
+          <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="48" fill="#fff">SZ</text>
+        </svg>
+        <div>
+          <h1>ShopiZey</h1>
+          <p class="lead">Boutique dropshipping « free + shipping » — produits à 0€ à l'achat</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="left">
+        <h2>Bienvenue sur ShopiZey — achetez malin, payez seulement la livraison</h2>
+        <p class="lead">Tous nos produits sont sélectionnés en mode "Free + Shipping". Vendez-toi ce que tu veux : coques, gadgets, bijoux, accessoires. Pas d'inventaire, livraison directe du fournisseur.</p>
+        <div style="margin-top:12px">
+          <span class="badge">Livraison : 3€ - 8€ (variable)</span>
+          <span class="badge" style="margin-left:8px">Paiement : virement / cash / PayPal</span>
+        </div>
+      </div>
+      <div class="right">
+        <img src="https://picsum.photos/seed/shop/600/400" alt="ShopiZey hero image">
+      </div>
+    </section>
+
+    <section id="products">
+      <h3 style="margin-top:22px">Produits en vedette</h3>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section class="policies">
+      <h4>FAQ rapide</h4>
+      <p><strong>Q :</strong> Pourquoi le produit est à 0€ ? <br><strong>R :</strong> Ce sont des offres "Free + Shipping" : le vendeur donne le produit, tu paies la livraison. Tu fixes ensuite ton prix de revente.</p>
+      <p><strong>Q :</strong> Délai de livraison ? <br><strong>R :</strong> 10–30 jours selon le produit et la période.</p>
+      <p><strong>Q :</strong> Retour / remboursement ? <br><strong>R :</strong> Politique dépendante du fournisseur. Ici tu peux offrir remboursement si non reçu après 45 jours.</p>
+    </section>
+
+    <section style="margin-top:18px">
+      <h4>Contact / Commande personnalisée</h4>
+      <p>Remplis le formulaire ci-dessous pour envoyer une demande de commande. Le bouton <em>Commander</em> dans le panier ouvrira ton client mail avec le récapitulatif.</p>
+      <form id="contactForm" onsubmit="event.preventDefault();alert('Formulaire envoyé (exemple)');">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <input required placeholder="Prénom" id="fname">
+          <input required placeholder="Nom" id="lname">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+          <input required placeholder="Email" id="email">
+          <input required placeholder="Téléphone (optionnel)" id="phone">
+        </div>
+        <textarea placeholder="Message / Remarques" id="message" style="margin-top:8px"></textarea>
+        <div style="margin-top:8px;display:flex;gap:8px">
+      <button type="button" class="btn" onclick="checkout()">Commander</button>
+      <button type="button" class="btn secondary" onclick="paypalPay()">PayPal</button>
+      <button type="button" class="btn secondary" onclick="clearCart()">Vider</button>
+    </div>
+      </form>
+    </section>
+
+    <footer>
+      <div class="container">
+        <small>© ShopiZey — Boutique créée automatiquement. Politique de confidentialité et conditions à personnaliser avant mise en ligne.</small>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Panier fixe -->
+  <div class="cart" id="cart">
+    <h3>Panier <span id="count">(0)</span></h3>
+    <div id="lines"></div>
+    <div class="line" style="border-top:1px dashed #eee;padding-top:8px;margin-top:8px">
+      <strong>Total</strong>
+      <strong id="total">0€</strong>
+    </div>
+    <div style="margin-top:8px;display:flex;gap:8px">
+      <button class="btn" onclick="checkout()">Commander</button>
+      <button class="btn secondary" onclick="clearCart()">Vider</button>
+    </div>
+  </div>
+
+  <script>
+    // Liste des produits (exemples — remplace les liens et descriptions par ceux des fournisseurs)
+    const products = [
+      {id:1,title:'Coque silicone iPhone - Free + Shipping',price:7.99,old:19.99,img:'https://picsum.photos/seed/phone/800/600',desc:'Coque souple, compatible iPhone. Offre free + shipping.'},
+      {id:2,title:'Anneau LED Selfie - Free + Shipping',price:6.49,old:14.99,img:'https://picsum.photos/seed/ring/800/600',desc:'Mini anneau LED pour selfies et live.'},
+      {id:3,title:'Porte-clés multi-outils - Free + Shipping',price:3.99,old:9.99,img:'https://picsum.photos/seed/key/800/600',desc:'Porte-clés compact multi-usage.'},
+      {id:4,title:'Bague ajustable - Free + Shipping',price:4.99,old:12.99,img:'https://picsum.photos/seed/ring2/800/600',desc:'Bague mode pour homme/femme.'},
+      {id:5,title:'Support voiture magnétique - Free + Shipping',price:8.49,old:21.99,img:'https://picsum.photos/seed/car/800/600',desc:'Support magnétique universel pour conducteurs.'},
+      {id:6,title:'Mini drone jouet - Free + Shipping',price:12.99,old:39.99,img:'https://picsum.photos/seed/drone/800/600',desc:'Mini drone de loisir (petit, fun).'},
+      {id:7,title:'Collier minimaliste acier - Free + Shipping',price:4.49,old:15.99,img:'https://picsum.photos/seed/necklace/800/600',desc:'Collier simple et tendance.'},
+      {id:8,title:'Brosse de nettoyage multi-surfaces - Free + Shipping',price:3.49,old:11.99,img:'https://picsum.photos/seed/brush/800/600',desc:'Mini brosse pour cuisine, salle de bain.'},
+      {id:9,title:'Support téléphone bureau - Free + Shipping',price:5.99,old:17.99,img:'https://picsum.photos/seed/stand/800/600',desc:'Support ergonomique pliable.'},
+      {id:10,title:'Bracelet anti-stress - Free + Shipping',price:2.99,old:8.99,img:'https://picsum.photos/seed/stress/800/600',desc:'Bracelet anti-stress tendance.'}
+    ];
+
+    // Initialisation affichage
+    const grid = document.getElementById('grid');
+    const cartEl = document.getElementById('cart');
+    const linesEl = document.getElementById('lines');
+    const countEl = document.getElementById('count');
+    const totalEl = document.getElementById('total');
+
+    let cart = JSON.parse(localStorage.getItem('shopizey_cart')||'[]');
+
+    function renderProducts(){
+      grid.innerHTML = '';
+      products.forEach(p=>{
+        const card = document.createElement('div');card.className='card';
+        card.innerHTML = `<img src="${p.img}" alt="${p.title}"><h4>${p.title}</h4><div class='price'>${p.price.toFixed(2)}€<span class='old'>${p.old}€</span></div><p style='color:var(--muted);font-size:13px;margin-top:6px'>${p.desc}</p><button class='btn' onclick='addToCart(${p.id})'>Ajouter au panier</button>`;
+        grid.appendChild(card);
+      })
+    }
+
+    function saveCart(){localStorage.setItem('shopizey_cart',JSON.stringify(cart));renderCart();}
+
+    function addToCart(id){
+      const p = products.find(x=>x.id===id);
+      const item = cart.find(x=>x.id===id);
+      if(item) item.qty++;
+      else cart.push({id:p.id,title:p.title,price:p.price,qty:1});
+      saveCart();
+      alert(p.title + ' ajouté au panier');
+    }
+
+    function renderCart(){
+      linesEl.innerHTML='';
+      let total=0;let count=0;
+      cart.forEach(it=>{
+        const line = document.createElement('div');line.className='line';
+        const prod = products.find(p=>p.id===it.id);
+        line.innerHTML = `<div style='display:flex;align-items:center;gap:6px'>
+            <img src='${prod.img}' style='width:32px;height:32px;object-fit:cover;border-radius:6px'>
+            ${it.title} x${it.qty}
+          </div><div>${(it.price*it.qty).toFixed(2)}€</div>`;
+        linesEl.appendChild(line);
+        total += it.price*it.qty; count += it.qty;
+      })
+      countEl.textContent = '('+count+')';
+      totalEl.textContent = total.toFixed(2)+'€';
+    }
+
+    function clearCart(){ if(confirm('Vider le panier ?')){cart=[];saveCart();}};
+
+    function checkout(){
+      if(cart.length===0){alert('Panier vide');return}
+      // Ouvre un mailto: avec résumé de commande. L'utilisateur devra envoyer le mail à ton adresse (à personnaliser).
+      const to = 'orders@shopizey.example'; // CHANGE: remplace par ton email réel
+      const subject = encodeURIComponent('Commande ShopiZey - ' + new Date().toLocaleDateString());
+      let body = 'Bonjour%0A%0AJe souhaite commander:%0A%0A';
+      cart.forEach(it=>{ body += encodeURIComponent('- '+it.title+' x'+it.qty+' : '+(it.price*it.qty).toFixed(2)+'€') + '%0A'; });
+      body += '%0ATotal: ' + encodeURIComponent(totalEl.textContent) + '%0A%0A';
+      body += encodeURIComponent('Nom:%0AAdresse:%0ATéléphone:%0AEmail:%0ARemarques:%0A');
+
+      const mailto = `mailto:${to}?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+    }
+
+    function submitContact(){
+      const fname = document.getElementById('fname').value;
+      const lname = document.getElementById('lname').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const message = document.getElementById('message').value;
+      const to = 'contact@shopizey.example'; // CHANGE
+      const subject = encodeURIComponent('Contact ShopiZey - ' + fname + ' ' + lname);
+      const body = encodeURIComponent('Nom: ' + fname + ' ' + lname + '\nEmail: ' + email + '\nTéléphone: ' + phone + '\n\nMessage:\n' + message);
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+
+    renderProducts(); renderCart();
+
+    function paypalPay(){
+      if(cart.length===0){alert('Panier vide');return}
+      const total = totalEl.textContent.replace('€','');
+      const url = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=TON-EMAIL-PAYPAL&currency_code=EUR&amount=${total}&item_name=Commande+ShopiZey`;
+      window.open(url,'_blank');
+    }
+  </script>
+
+  <!-- Scripts TikTok/Instagram (10 idées) -->
+<!--
+1) Unboxing rapide : "J'ai payé seulement la livraison pour ça !?" (montre produit + réaction)
+2) Avant / Après : montre un support voiture ou un gadget en action.
+3) Transition fun : main vide -> produit apparaît.
+4) POV : "Quand tu trouves un site où les produits sont GRATUITS 😳"
+5) Close-up : zoom très proche sur détails du produit.
+6) Test de solidité (léger) d’un accessoire.
+7) Mise en situation : montre un accessoire utilisé en vrai.
+8) Vidéo ASMR d’emballage / ouverture.
+9) Comparatif : "En magasin 20€ / ici : free + shipping 🙌"
+10) Storytime : "Je testais un site et… j’ai été surpris !".
+-->
+
+<!-- Instructions pour publication et personnalisation -->
+  <!--
+    Instructions rapides:
+    1) Remplace les emails 'orders@shopizey.example' et 'contact@shopizey.example' par ton email réel dans le script.
+    2) Remplace les images par celles des fournisseurs (AliExpress / CJ / Temu). Utilise les images du produit.
+    3) Hébergement gratuit: GitHub Pages (push ce fichier index.html dans un repo, active Pages) ou Netlify/Dropbox/Neocities.
+    4) Avant de vendre: personnalise la politique de retour, ajoute une page Conditions & GDPR et choisis un moyen de paiement (ex: PayPal business, Stripe + modalité de livraison).
+    5) Marketing gratuit: TikTok (vidéos unboxing), Instagram Reels, groupes FB, Pinterest.
+
+    Modèle de texte pour la page Politique de remboursement à coller sur ton site (à personnaliser):
+
+    "Si vous ne recevez pas votre commande sous 45 jours, contactez-nous et nous proposerons un remboursement complet ou un renvoi après vérification. Les délais de livraison varient selon le fournisseur."
+
+    Si tu veux, je peux:
+    - Personnaliser ce site (changer couleurs, logo, texte)
+    - Générer les fiches produits prêtes à copier-coller avec liens AliExpress/CJ
+    - Créer 10 posts TikTok/Instagram rédigés et scénarisés.
+  -->
+</body>
+</html>
